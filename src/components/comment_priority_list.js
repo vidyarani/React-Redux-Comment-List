@@ -2,20 +2,20 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 const CommentPriorityList = (props) => {
-    console.log("priority list props: " + props.priority);
-    let list = props.comments.map(comment => 
-        <li key = {comment.name}>priority: {comment.priority} {comment.name}</li>
-    );
-    return (
+    let filteredList = props.comments.filter(comment => comment.priority == props.priority);
+
+    let listToDisplay = filteredList.map(comment => 
+        <li key = {comment.name}>Priority: {comment.priority} Comment: {comment.name}</li>);
+    
+        return (
         <div>
-        <h5>{props.title}</h5>
-        <ul className = "comment_priority_list">{list}</ul> 
+            <h5>{props.title}</h5>
+            <ul className = "comment_priority_list">{listToDisplay}</ul> 
         </div>
     );
 };
 
 function mapStateToProps(state){
-    console.log("mapStateToProps state:", state);
     return {comments: state.comments};
 }
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CommentPriorityList from './comment_priority_list';
 import {connect} from 'react-redux';
+import titles from '../constants/title'
 
 class CommentListGroup extends Component {
     constructor(props){
@@ -9,7 +10,9 @@ class CommentListGroup extends Component {
     render() {
         return(
         <div className = "comment-list-group">
-            <div><CommentPriorityList title = {"List"} /></div>
+            <div><CommentPriorityList title = { titles.LOW_PRIORITY_LIST } priority = "0" /></div>
+            <div><CommentPriorityList title = { titles.MEDIUM_PRIORITY_LIST } priority = "1" /></div>
+            <div><CommentPriorityList title = { titles.HIGH_PRIORITY_LIST } priority = "2" /></div>
         </div>
     )}
 };
